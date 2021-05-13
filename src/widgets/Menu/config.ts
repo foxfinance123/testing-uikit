@@ -55,7 +55,7 @@ export const socials = [
       },
       // {
       //   label: "Announcements",
-      //   href: "https://t.me/goosefinanceann",
+      //   href: "https://t.me/",
       // },
     ],
   },

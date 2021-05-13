@@ -2111,7 +2111,7 @@ var links = [
         items: [
             {
                 label: "Exchange",
-                href: "https://exchange.worldswap.finance",
+                href: "https://exchange.worldswap.finance/",
             },
             {
                 label: "Liquidity",
@@ -2127,54 +2127,7 @@ var links = [
     {
         label: "Pools",
         icon: "PoolIcon",
-        href: "/syrup",
-    },
-    {
-        label: "Lottery",
-        icon: "TicketIcon",
-        href: "/lottery",
-    },
-    {
-        label: "NFT",
-        icon: "NftIcon",
-        href: "/nft",
-    },
-    {
-        label: "Profile & Teams",
-        icon: "GroupsIcon",
-        items: [
-            {
-                label: "Leaderboard",
-                href: "/",
-            },
-            {
-                label: "YourProfile",
-                href: "/",
-            },
-        ],
-        calloutClass: "rainbow",
-    },
-    {
-        label: "Info",
-        icon: "InfoIcon",
-        items: [
-            {
-                label: "Overview",
-                href: "https://pancakeswap.info",
-            },
-            {
-                label: "Tokens",
-                href: "https://pancakeswap.info/tokens",
-            },
-            {
-                label: "Pairs",
-                href: "https://pancakeswap.info/pairs",
-            },
-            {
-                label: "Accounts",
-                href: "https://pancakeswap.info/accounts",
-            },
-        ],
+        href: "/pools",
     },
     {
         label: "More",
@@ -2186,11 +2139,7 @@ var links = [
             },
             {
                 label: "Docs",
-                href: "https://goosedefi.gitbook.io/goose-finance/",
-            },
-            {
-                label: "Blog",
-                href: "https://goosefinance.medium.com/",
+                href: "https://docs.worldswap.finance",
             },
         ],
     },
@@ -2202,11 +2151,7 @@ var socials = [
         items: [
             {
                 label: "English",
-                href: "https://t.me/WorldSwap",
-            },
-            {
-                label: "Announcements",
-                href: "https://t.me/goosefinanceann",
+                href: "https://t.me/WorldSwapFinance",
             },
         ],
     },
