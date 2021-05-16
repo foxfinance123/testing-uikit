@@ -1,9 +1,11 @@
-export declare const links: ({
-    label: string;
-    icon: string;
-    href: string;
-    items?: undefined;
-} | {
+interface Edition {
+    key: string;
+    tokenAddress: string;
+    referrals: {
+        enabled: boolean;
+    };
+}
+export declare function getMenuLinks(edition: Edition): ({
     label: string;
     icon: string;
     items: {
@@ -11,6 +13,11 @@ export declare const links: ({
         href: string;
     }[];
     href?: undefined;
+} | {
+    label: string;
+    icon: string;
+    href: string;
+    items?: undefined;
 })[];
 export declare const socials: ({
     label: string;
@@ -30,3 +37,4 @@ export declare const MENU_HEIGHT = 64;
 export declare const MENU_ENTRY_HEIGHT = 48;
 export declare const SIDEBAR_WIDTH_FULL = 240;
 export declare const SIDEBAR_WIDTH_REDUCED = 56;
+export {};

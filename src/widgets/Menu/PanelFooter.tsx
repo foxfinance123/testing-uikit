@@ -6,17 +6,16 @@ import Flex from "../../components/Flex/Flex";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import Link from "../../components/Link/Link";
 import Skeleton from "../../components/Skeleton/Skeleton";
-import Button from "../../components/Button/Button";
 import IconButton from "../../components/Button/IconButton";
-import MenuButton from "./MenuButton";
 import * as IconModule from "./icons";
 import { socials, MENU_ENTRY_HEIGHT } from "./config";
 import { PanelProps, PushedProps } from "./types";
 
-interface Props extends PanelProps, PushedProps {}
+interface Props extends PanelProps, PushedProps {
+  logoUrl: string;
+}
 
 const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
-const { MoonIcon, SunIcon, LanguageIcon } = Icons;
 
 const Container = styled.div`
   flex: none;
@@ -64,6 +63,7 @@ const PanelFooter: React.FC<Props> = ({
   langs,
   setLang,
   priceLink,
+  logoUrl,
 }) => {
   if (!isPushed) {
     return (
@@ -80,7 +80,7 @@ const PanelFooter: React.FC<Props> = ({
       <SocialEntry>
         {cakePriceUsd ? (
           <PriceLink href={priceLink} target="_blank">
-            <PancakeRoundIcon width="24px" mr="8px" />
+            <PancakeRoundIcon logoUrl={logoUrl} width="24px" mr="8px" />
             <Text color="textSubtle" bold>{`$${cakePriceUsd.toFixed(3)}`}</Text>
           </PriceLink>
         ) : (

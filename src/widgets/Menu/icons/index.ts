@@ -1,3 +1,4 @@
+export { default as ExchangeIcon } from "./Exchange";
 export { default as FarmIcon } from "./Farm";
 export { default as GroupsIcon } from "./Groups";
 export { default as HamburgerIcon } from "./Hamburger";
@@ -5,6 +6,7 @@ export { default as HamburgerCloseIcon } from "./HamburgerClose";
 export { default as HomeIcon } from "./Home";
 export { default as IfoIcon } from "./Ifo";
 export { default as InfoIcon } from "./Info";
+export { default as LiquidityIcon } from "./Liquidity";
 export { default as LanguageIcon } from "./Language";
 export { default as LogoIcon } from "./Logo";
 export { default as MoonIcon } from "./Moon";
@@ -24,4 +26,3 @@ export { default as LayerIcon } from "./Layer";
 export { default as RoadmapIcon } from "./Roadmap";
 export { default as BondsIcon } from "./Bonds";
 export { default as VaultsIcon } from "./Vaults";
-export { default as EggHouseIcon } from "./EggHouse";
