@@ -1,4 +1,4 @@
-export declare const links: ({
+export declare function getMenuLinks(base: string): ({
     label: string;
     icon: string;
     href: string;

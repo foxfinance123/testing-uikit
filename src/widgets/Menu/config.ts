@@ -1,48 +1,74 @@
-export const links = [
-  {
-    label: "Home",
-    icon: "HomeIcon",
-    href: "/",
-  },
-  {
-    label: "Trade",
-    icon: "TradeIcon",
-    items: [
-      {
-        label: "Exchange",
-        href: "https://exchange.worldswap.finance/",
-      },
-      {
-        label: "Liquidity",
-        href: "https://exchange.worldswap.finance/#/pool",
-      },
-    ],
-  },
-  {
-    label: "Farms",
-    icon: "FarmIcon",
-    href: "/farms",
-  },
-  {
-    label: "Pools",
-    icon: "PoolIcon",
-    href: "/pools",
-  },
-  {
-    label: "More",
-    icon: "MoreIcon",
-    items: [
-      {
-        label: "Github",
-        href: "https://github.com/WorldSwap",
-      },
-      {
-        label: "Docs",
-        href: "https://docs.worldswap.finance",
-      },
-    ],
-  },
-];
+export function getMenuLinks(base: string) {
+  const isExchange = base === "exchange";
+  const farmUrl = isExchange ? `https://${base}.worldswap.finance/` : "/";
+  // const exchangeUrl = isExchange ? '/' : 'https://exchange.worldswap.finance/'
+
+  return [
+    {
+      label: "Home",
+      icon: "HomeIcon",
+      href: farmUrl,
+    },
+    {
+      label: "Exchange",
+      href: "https://exchange.pancakeswap.com/#/swap?outputCurrency=0xc052568aF1B80157D0640afB0Df82712A98Aa931",
+      icon: "ExchangeIcon",
+    },
+    {
+      label: "Liquidity",
+      href: "https://exchange.pancakeswap.com/#/pool",
+      icon: "LiquidityIcon",
+    },
+    {
+      label: "Farms",
+      icon: "FarmIcon",
+      href: `${farmUrl}farms`,
+    },
+    {
+      label: "Pools",
+      icon: "PoolIcon",
+      href: `${farmUrl}pools`,
+    },
+    // {
+    //   label: 'Lottery',
+    //   icon: 'TicketIcon',
+    //   href: '/lottery',
+    // },
+    // {
+    //   label: 'NFT',
+    //   icon: 'NftIcon',
+    //   href: '/nft',
+    // },
+    {
+      label: "Info",
+      icon: "InfoIcon",
+      items: [
+        {
+          label: "PooCoin",
+          href: "https://poocoin.app/tokens/0xc052568af1b80157d0640afb0df82712a98aa931",
+        },
+        {
+          label: "PancakeSwap",
+          href: "https://pancakeswap.info/token/0xc052568aF1B80157D0640afB0Df82712A98Aa931",
+        },
+      ],
+    },
+    {
+      label: "More",
+      icon: "MoreIcon",
+      items: [
+        {
+          label: "Github",
+          href: "https://github.com/WorldSwap",
+        },
+        {
+          label: "Docs",
+          href: "https://docs.worldswap.finance",
+        },
+      ],
+    },
+  ];
+}
 
 export const socials = [
   {
