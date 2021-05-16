@@ -1889,10 +1889,11 @@ var LogoText = styled__default['default'].div(templateObject_1$x || (templateObj
     var theme = _a.theme;
     return theme.colors.text;
 });
-var Logo = function () {
+var Logo = function (_a) {
+    var text = _a.text;
     return (React__default['default'].createElement(React__default['default'].Fragment, null,
         React__default['default'].createElement("img", { width: "32", src: "/images/world/worldswap.svg" }),
-        React__default['default'].createElement(LogoText, null, "World Swap - Dublin Edition \u2618\uFE0F")));
+        React__default['default'].createElement(LogoText, null, text)));
 };
 var templateObject_1$x;
 
@@ -2101,14 +2102,14 @@ var StyledLink$1 = styled__default['default'](reactRouterDom.Link)(templateObjec
     return theme.mediaQueries.nav;
 });
 var Logo$1 = function (_a) {
-    var isPushed = _a.isPushed, togglePush = _a.togglePush, isDark = _a.isDark, href = _a.href;
+    var isPushed = _a.isPushed, togglePush = _a.togglePush, isDark = _a.isDark, href = _a.href, text = _a.text;
     var isAbsoluteUrl = href.startsWith("http");
     var innerLogo = (React__default['default'].createElement(React__default['default'].Fragment, null,
         React__default['default'].createElement(Icon$q, { className: "mobile-icon" }),
-        React__default['default'].createElement(Logo, { className: "desktop-icon", isDark: isDark })));
+        React__default['default'].createElement(Logo, { text: text, className: "desktop-icon", isDark: isDark })));
     return (React__default['default'].createElement(Flex, null,
         React__default['default'].createElement(MenuButton, { "aria-label": "Toggle menu", onClick: togglePush, mr: "24px" }, isPushed ? (React__default['default'].createElement(Icon$L, { width: "24px", color: "textSubtle" })) : (React__default['default'].createElement(Icon$K, { width: "24px", color: "textSubtle" }))),
-        isAbsoluteUrl ? (React__default['default'].createElement(StyledLink$1, { as: "a", href: href, "aria-label": "Pancake home page" }, innerLogo)) : (React__default['default'].createElement(StyledLink$1, { to: href, "aria-label": "Pancake home page" }, innerLogo))));
+        isAbsoluteUrl ? (React__default['default'].createElement(StyledLink$1, { as: "a", href: href, "aria-label": "WorldSwap home page" }, innerLogo)) : (React__default['default'].createElement(StyledLink$1, { to: href, "aria-label": "WorldSwap home page" }, innerLogo))));
 };
 var templateObject_1$z;
 
@@ -2601,7 +2602,7 @@ var MobileOnlyOverlay = styled__default['default'](Overlay)(templateObject_5$1 |
 });
 var Menu = function (_a) {
     var _b;
-    var account = _a.account, login = _a.login, logout = _a.logout, isDark = _a.isDark, toggleTheme = _a.toggleTheme, langs = _a.langs, setLang = _a.setLang, currentLang = _a.currentLang, cakePriceUsd = _a.cakePriceUsd, links = _a.links, priceLink = _a.priceLink, profile = _a.profile, children = _a.children;
+    var account = _a.account, login = _a.login, logout = _a.logout, isDark = _a.isDark, toggleTheme = _a.toggleTheme, langs = _a.langs, setLang = _a.setLang, currentLang = _a.currentLang, cakePriceUsd = _a.cakePriceUsd, links = _a.links, logoText = _a.logoText, priceLink = _a.priceLink, profile = _a.profile, children = _a.children;
     var isXl = useMatchBreakpoints().isXl;
     var isMobile = isXl === false;
     var _c = React.useState(!isMobile), isPushed = _c[0], setIsPushed = _c[1];
@@ -2639,7 +2640,7 @@ var Menu = function (_a) {
     var homeLink = links.find(function (link) { return link.label === "Home"; });
     return (React__default['default'].createElement(Wrapper$1, null,
         React__default['default'].createElement(StyledNav, { showMenu: showMenu },
-            React__default['default'].createElement(Logo$1, { isPushed: isPushed, togglePush: function () { return setIsPushed(function (prevState) { return !prevState; }); }, isDark: isDark, href: (_b = homeLink === null || homeLink === void 0 ? void 0 : homeLink.href) !== null && _b !== void 0 ? _b : "/" }),
+            React__default['default'].createElement(Logo$1, { text: isMobile ? '' : logoText, isPushed: isPushed, togglePush: function () { return setIsPushed(function (prevState) { return !prevState; }); }, isDark: isDark, href: (_b = homeLink === null || homeLink === void 0 ? void 0 : homeLink.href) !== null && _b !== void 0 ? _b : "/" }),
             React__default['default'].createElement(Flex, null,
                 React__default['default'].createElement(UserBlock, { account: account, login: login, logout: logout }),
                 profile && React__default['default'].createElement(Avatar, { profile: profile }))),

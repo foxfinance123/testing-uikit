@@ -42,6 +42,7 @@ export interface PanelProps {
     priceLink: string;
 }
 export interface NavProps extends PanelProps {
+    logoText: string;
     account?: string;
     login: Login;
     profile?: Profile;

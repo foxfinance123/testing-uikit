@@ -11,6 +11,7 @@ interface Props {
   isDark: boolean;
   togglePush: () => void;
   href: string;
+  text: string;
 }
 
 const StyledLink = styled(Link)`
@@ -31,12 +32,12 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Logo: React.FC<Props> = ({ isPushed, togglePush, isDark, href }) => {
+const Logo: React.FC<Props> = ({ isPushed, togglePush, isDark, href, text }) => {
   const isAbsoluteUrl = href.startsWith("http");
   const innerLogo = (
     <>
       <LogoIcon className="mobile-icon" />
-      <LogoWithText className="desktop-icon" isDark={isDark} />
+      <LogoWithText text={text} className="desktop-icon" isDark={isDark} />
     </>
   );
 
@@ -50,11 +51,11 @@ const Logo: React.FC<Props> = ({ isPushed, togglePush, isDark, href }) => {
         )}
       </MenuButton>
       {isAbsoluteUrl ? (
-        <StyledLink as="a" href={href} aria-label="Pancake home page">
+        <StyledLink as="a" href={href} aria-label="WorldSwap home page">
           {innerLogo}
         </StyledLink>
       ) : (
-        <StyledLink to={href} aria-label="Pancake home page">
+        <StyledLink to={href} aria-label="WorldSwap home page">
           {innerLogo}
         </StyledLink>
       )}

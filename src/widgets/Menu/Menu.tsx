@@ -69,6 +69,7 @@ const Menu: React.FC<NavProps> = ({
   currentLang,
   cakePriceUsd,
   links,
+  logoText,
   priceLink,
   profile,
   children,
@@ -115,6 +116,7 @@ const Menu: React.FC<NavProps> = ({
     <Wrapper>
       <StyledNav showMenu={showMenu}>
         <Logo
+          text={isMobile ? "" : logoText}
           isPushed={isPushed}
           togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
           isDark={isDark}
