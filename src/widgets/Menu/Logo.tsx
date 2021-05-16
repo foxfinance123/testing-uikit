@@ -17,12 +17,6 @@ interface Props {
 const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
-  .mobile-icon {
-    width: 32px;
-    ${({ theme }) => theme.mediaQueries.nav} {
-      display: none;
-    }
-  }
   .desktop-icon {
     width: 156px;
     display: none;
@@ -34,12 +28,7 @@ const StyledLink = styled(Link)`
 
 const Logo: React.FC<Props> = ({ isPushed, togglePush, isDark, href, text }) => {
   const isAbsoluteUrl = href.startsWith("http");
-  const innerLogo = (
-    <>
-      <LogoIcon className="mobile-icon" />
-      <LogoWithText text={text} className="desktop-icon" isDark={isDark} />
-    </>
-  );
+  const innerLogo = <LogoWithText text={text} className="desktop-icon" isDark={isDark} />;
 
   return (
     <Flex>

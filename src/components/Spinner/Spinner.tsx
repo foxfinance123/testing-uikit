@@ -12,10 +12,10 @@ const rotate = keyframes`
   }
 `;
 
-const SpinnerIcon: React.FC<SvgProps> = (props) => {
+const SpinnerIcon: React.FC<SvgProps & { logoUrl: string }> = (props) => {
   return (
     <Svg viewBox="0 0 96 96" {...props}>
-      <image width="96" height="96" href="/images/farms/dub.png" />
+      <image width="96" height="96" href={props.logoUrl} />
     </Svg>
   );
 };
@@ -32,10 +32,10 @@ const RotatingPancakeIcon = styled(SpinnerIcon)`
   transform: translate3d(0, 0, 0);
 `;
 
-const Spinner: React.FC<SpinnerProps> = ({ size = 128 }) => {
+const Spinner: React.FC<SpinnerProps & { logoUrl: string }> = ({ size = 128, logoUrl }) => {
   return (
     <Container>
-      <RotatingPancakeIcon width={`${size * 0.5}px`} />
+      <RotatingPancakeIcon width={`${size * 0.5}px`} logoUrl={logoUrl} />
     </Container>
   );
 };

@@ -6,6 +6,7 @@ import { SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
 import { PanelProps, PushedProps } from "./types";
 
 interface Props extends PanelProps, PushedProps {
+  logoUrl: string;
   showMenu: boolean;
   isMobile: boolean;
 }
