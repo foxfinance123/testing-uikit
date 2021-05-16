@@ -1,4 +1,4 @@
-export declare function getMenuLinks(base: string): ({
+export declare function getMenuLinks(base: string, tokenAddress: string): ({
     label: string;
     icon: string;
     href: string;

@@ -2098,7 +2098,7 @@ var Logo$1 = function (_a) {
 };
 var templateObject_1$z;
 
-function getMenuLinks(base) {
+function getMenuLinks(base, tokenAddress) {
     var isExchange = base === "exchange";
     var farmUrl = isExchange ? "https://" + base + ".worldswap.finance/" : "/";
     // const exchangeUrl = isExchange ? '/' : 'https://exchange.worldswap.finance/'
@@ -2110,7 +2110,7 @@ function getMenuLinks(base) {
         },
         {
             label: "Exchange",
-            href: "https://exchange.pancakeswap.com/#/swap?outputCurrency=0xc052568aF1B80157D0640afB0Df82712A98Aa931",
+            href: "https://exchange.pancakeswap.com/#/swap?outputCurrency=" + tokenAddress,
             icon: "ExchangeIcon",
         },
         {
@@ -2144,11 +2144,11 @@ function getMenuLinks(base) {
             items: [
                 {
                     label: "PooCoin",
-                    href: "https://poocoin.app/tokens/0xc052568af1b80157d0640afb0df82712a98aa931",
+                    href: "https://poocoin.app/tokens/" + tokenAddress,
                 },
                 {
                     label: "PancakeSwap",
-                    href: "https://pancakeswap.info/token/0xc052568aF1B80157D0640afB0Df82712A98Aa931",
+                    href: "https://pancakeswap.info/token/" + tokenAddress,
                 },
             ],
         },

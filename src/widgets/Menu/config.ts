@@ -1,4 +1,4 @@
-export function getMenuLinks(base: string) {
+export function getMenuLinks(base: string, tokenAddress: string) {
   const isExchange = base === "exchange";
   const farmUrl = isExchange ? `https://${base}.worldswap.finance/` : "/";
   // const exchangeUrl = isExchange ? '/' : 'https://exchange.worldswap.finance/'
@@ -11,7 +11,7 @@ export function getMenuLinks(base: string) {
     },
     {
       label: "Exchange",
-      href: "https://exchange.pancakeswap.com/#/swap?outputCurrency=0xc052568aF1B80157D0640afB0Df82712A98Aa931",
+      href: `https://exchange.pancakeswap.com/#/swap?outputCurrency=${tokenAddress}`,
       icon: "ExchangeIcon",
     },
     {
@@ -45,11 +45,11 @@ export function getMenuLinks(base: string) {
       items: [
         {
           label: "PooCoin",
-          href: "https://poocoin.app/tokens/0xc052568af1b80157d0640afb0df82712a98aa931",
+          href: `https://poocoin.app/tokens/${tokenAddress}`,
         },
         {
           label: "PancakeSwap",
-          href: "https://pancakeswap.info/token/0xc052568aF1B80157D0640afB0Df82712A98Aa931",
+          href: `https://pancakeswap.info/token/${tokenAddress}`,
         },
       ],
     },
