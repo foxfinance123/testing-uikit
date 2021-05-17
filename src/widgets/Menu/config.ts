@@ -109,7 +109,7 @@ export function getMenuLinks(edition: Edition) {
         },
       ],
     },
-  ];
+  ].filter((item) => item.label !== "Referrals" || edition?.referrals.enabled);
 }
 
 export const socials = [

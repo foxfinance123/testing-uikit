@@ -2192,7 +2192,7 @@ function getMenuLinks(edition) {
                 },
             ],
         },
-    ];
+    ].filter(function (item) { return item.label !== "Referrals" || (edition === null || edition === void 0 ? void 0 : edition.referrals.enabled); });
 }
 var socials = [
     {
