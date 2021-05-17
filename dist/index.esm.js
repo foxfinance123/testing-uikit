@@ -2098,6 +2098,20 @@ function getMenuLinks(edition) {
     var farmUrl = isExchange ? "https://" + edition.key + ".worldswap.finance/" : "/";
     return [
         {
+            label: "Editions",
+            icon: "LayerIcon",
+            items: [
+                {
+                    label: "Dublin 🇮🇪",
+                    href: "https://dublin.worldswap.finance",
+                },
+                {
+                    label: "Amsterdam 🇳🇱",
+                    href: "https://amsterdam.worldswap.finance",
+                },
+            ],
+        },
+        {
             label: "Home",
             icon: "HomeIcon",
             href: farmUrl,
