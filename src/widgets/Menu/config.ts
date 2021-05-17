@@ -1,7 +1,30 @@
-export function getMenuLinks(base: string, tokenAddress: string) {
-  const isExchange = base === "exchange";
-  const farmUrl = isExchange ? `https://${base}.worldswap.finance/` : "/";
-  // const exchangeUrl = isExchange ? '/' : 'https://exchange.worldswap.finance/'
+interface Edition {
+  key: string;
+  tokenSymbol: string;
+  tokenAddress: string;
+  referrals: {
+    enabled: boolean;
+  };
+  masterChefTokenPerBlock: string;
+  priceLink: string;
+  startTime: Date;
+  startBlock: string;
+  logoText: string;
+  logoUrl: string;
+  homeSecondaryTitle: string;
+  homeHeroImg1: string;
+  homeHeroImg2: string;
+  homeStakingCardBackground: string;
+  farmPrimaryTitle: string;
+  farmSecondaryTitle: string;
+  poolPrimaryTitle: string;
+  poolSecondaryTitle: string;
+  bottomIllustration: JSX.Element;
+}
+
+export function getMenuLinks(edition: Edition) {
+  const isExchange = edition.key === "exchange";
+  const farmUrl = isExchange ? `https://${edition.key}.worldswap.finance/` : "/";
 
   return [
     {
@@ -11,7 +34,7 @@ export function getMenuLinks(base: string, tokenAddress: string) {
     },
     {
       label: "Exchange",
-      href: `https://exchange.pancakeswap.com/#/swap?outputCurrency=${tokenAddress}`,
+      href: `https://exchange.pancakeswap.com/#/swap?outputCurrency=${edition.tokenAddress}`,
       icon: "ExchangeIcon",
     },
     {
@@ -29,6 +52,11 @@ export function getMenuLinks(base: string, tokenAddress: string) {
       icon: "PoolIcon",
       href: `${farmUrl}pools`,
     },
+    {
+      label: "Referrals",
+      icon: "GroupsIcon",
+      href: `${farmUrl}referrals`,
+    },
     // {
     //   label: 'Lottery',
     //   icon: 'TicketIcon',
@@ -45,11 +73,11 @@ export function getMenuLinks(base: string, tokenAddress: string) {
       items: [
         {
           label: "PooCoin",
-          href: `https://poocoin.app/tokens/${tokenAddress}`,
+          href: `https://poocoin.app/tokens/${edition.tokenAddress}`,
         },
         {
           label: "PancakeSwap",
-          href: `https://pancakeswap.info/token/${tokenAddress}`,
+          href: `https://pancakeswap.info/token/${edition.tokenAddress}`,
         },
       ],
     },

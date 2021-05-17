@@ -2106,10 +2106,9 @@ var Logo$1 = function (_a) {
 };
 var templateObject_1$z;
 
-function getMenuLinks(base, tokenAddress) {
-    var isExchange = base === "exchange";
-    var farmUrl = isExchange ? "https://" + base + ".worldswap.finance/" : "/";
-    // const exchangeUrl = isExchange ? '/' : 'https://exchange.worldswap.finance/'
+function getMenuLinks(edition) {
+    var isExchange = edition.key === "exchange";
+    var farmUrl = isExchange ? "https://" + edition.key + ".worldswap.finance/" : "/";
     return [
         {
             label: "Home",
@@ -2118,7 +2117,7 @@ function getMenuLinks(base, tokenAddress) {
         },
         {
             label: "Exchange",
-            href: "https://exchange.pancakeswap.com/#/swap?outputCurrency=" + tokenAddress,
+            href: "https://exchange.pancakeswap.com/#/swap?outputCurrency=" + edition.tokenAddress,
             icon: "ExchangeIcon",
         },
         {
@@ -2136,6 +2135,11 @@ function getMenuLinks(base, tokenAddress) {
             icon: "PoolIcon",
             href: farmUrl + "pools",
         },
+        {
+            label: "Referrals",
+            icon: "GroupsIcon",
+            href: farmUrl + "referrals",
+        },
         // {
         //   label: 'Lottery',
         //   icon: 'TicketIcon',
@@ -2152,11 +2156,11 @@ function getMenuLinks(base, tokenAddress) {
             items: [
                 {
                     label: "PooCoin",
-                    href: "https://poocoin.app/tokens/" + tokenAddress,
+                    href: "https://poocoin.app/tokens/" + edition.tokenAddress,
                 },
                 {
                     label: "PancakeSwap",
-                    href: "https://pancakeswap.info/token/" + tokenAddress,
+                    href: "https://pancakeswap.info/token/" + edition.tokenAddress,
                 },
             ],
         },
@@ -2298,7 +2302,6 @@ var PanelBody = function (_a) {
 var templateObject_1$C;
 
 var Icons$1 = IconModule;
-Icons$1.MoonIcon; Icons$1.SunIcon; Icons$1.LanguageIcon;
 var Container$4 = styled__default['default'].div(templateObject_1$D || (templateObject_1$D = __makeTemplateObject(["\n  flex: none;\n  padding: 8px 4px;\n  background-color: ", ";\n  border-top: solid 2px rgba(133, 133, 133, 0.1);\n"], ["\n  flex: none;\n  padding: 8px 4px;\n  background-color: ", ";\n  border-top: solid 2px rgba(133, 133, 133, 0.1);\n"])), function (_a) {
     var theme = _a.theme;
     return theme.nav.background;
