@@ -5,7 +5,6 @@ interface Edition {
   referrals: {
     enabled: boolean;
   };
-  masterChefTokenPerBlock: string;
   priceLink: string;
   startTime: Date;
   startBlock: string;
