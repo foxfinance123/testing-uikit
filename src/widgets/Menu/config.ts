@@ -93,6 +93,11 @@ export function getMenuLinks(edition: Edition) {
         },
       ],
     },
+    {
+      label: "Audit",
+      icon: "AuditIcon",
+      href: "https://github.com/TechRate/Smart-Contract-Audits/blob/main/Worldswap.pdf",
+    },
   ].filter((item) => item.label !== "Referrals" || edition?.referrals.enabled);
 }
 

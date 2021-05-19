@@ -2179,6 +2179,11 @@ function getMenuLinks(edition) {
                 },
             ],
         },
+        {
+            label: "Audit",
+            icon: "AuditIcon",
+            href: "https://github.com/TechRate/Smart-Contract-Audits/blob/main/Worldswap.pdf",
+        },
     ].filter(function (item) { return item.label !== "Referrals" || (edition === null || edition === void 0 ? void 0 : edition.referrals.enabled); });
 }
 var socials = [
