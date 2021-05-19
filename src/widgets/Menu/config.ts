@@ -1,24 +1,9 @@
 interface Edition {
   key: string;
-  tokenSymbol: string;
   tokenAddress: string;
   referrals: {
     enabled: boolean;
   };
-  priceLink: string;
-  startTime: Date;
-  startBlock: string;
-  logoText: string;
-  logoUrl: string;
-  homeSecondaryTitle: string;
-  homeHeroImg1: string;
-  homeHeroImg2: string;
-  homeStakingCardBackground: string;
-  farmPrimaryTitle: string;
-  farmSecondaryTitle: string;
-  poolPrimaryTitle: string;
-  poolSecondaryTitle: string;
-  bottomIllustration: JSX.Element;
 }
 
 export function getMenuLinks(edition: Edition) {
