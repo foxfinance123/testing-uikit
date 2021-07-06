@@ -1,25 +1,18 @@
 import React from "react";
-import styled, { DefaultTheme } from "styled-components";
+import Svg from "../../../components/Svg/Svg";
 import { SvgProps } from "../../../components/Svg/types";
 
 interface LogoProps extends SvgProps {
   isDark: boolean;
-  text: string;
 }
 
-const LogoText = styled.div<{ theme: DefaultTheme }>`
-  font-size: 24px;
-  color: ${({ theme }) => theme.colors.text};
-  margin-left: 12px;
-`;
-
-const Logo: React.FC<LogoProps> = ({ text }: LogoProps) => {
+const Logo: React.FC<LogoProps> = ({ isDark, ...props }) => {
+  const textColor = isDark ? "#FFFFFF" : "#000000";
   return (
-    <>
-      <img width="32" src="/images/world/worldswap.svg" />
-      <LogoText>{text}</LogoText>
-    </>
-  );
+    <Svg viewBox="0 0 205 26" {...props}>
+      <image width="205" height="26" href={isDark ? '/images/egg/LogoTextNewDark.png' : '/images/egg/LogoTextNewWhite.png'}/>
+    </Svg>
+  )
 };
 
 export default Logo;

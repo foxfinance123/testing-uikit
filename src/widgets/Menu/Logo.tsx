@@ -11,12 +11,17 @@ interface Props {
   isDark: boolean;
   togglePush: () => void;
   href: string;
-  text: string;
 }
 
 const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
+  .mobile-icon {
+    width: 32px;
+    ${({ theme }) => theme.mediaQueries.nav} {
+      display: none;
+    }
+  }
   .desktop-icon {
     width: 156px;
     display: none;
@@ -26,25 +31,30 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Logo: React.FC<Props> = ({ isPushed, togglePush, isDark, href, text }) => {
+const Logo: React.FC<Props> = ({ isPushed, togglePush, isDark, href }) => {
   const isAbsoluteUrl = href.startsWith("http");
-  const innerLogo = <LogoWithText text={text} className="desktop-icon" isDark={isDark} />;
+  const innerLogo = (
+    <>
+      <LogoIcon className="mobile-icon" />
+      <LogoWithText className="desktop-icon" isDark={isDark} />
+    </>
+  );
 
   return (
     <Flex>
       <MenuButton aria-label="Toggle menu" onClick={togglePush} mr="24px">
         {isPushed ? (
-          <HamburgerCloseIcon width="24px" color="textSubtle" />
+          <HamburgerCloseIcon width="24px" color="primary" />
         ) : (
-          <HamburgerIcon width="24px" color="textSubtle" />
+          <HamburgerIcon width="24px" color="primary" />
         )}
       </MenuButton>
       {isAbsoluteUrl ? (
-        <StyledLink as="a" href={href} aria-label="WorldSwap home page">
+        <StyledLink as="a" href={href} aria-label="FoxFinance home page">
           {innerLogo}
         </StyledLink>
       ) : (
-        <StyledLink to={href} aria-label="WorldSwap home page">
+        <StyledLink to={href} aria-label="FoxFinance home page">
           {innerLogo}
         </StyledLink>
       )}

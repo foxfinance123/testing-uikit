@@ -17,7 +17,7 @@ const Tag: React.FC<TagProps> = ({ startIcon, endIcon, children, ...props }) => 
 );
 
 Tag.defaultProps = {
-  variant: "primary",
+  variant: "success",
   outline: false,
 };
 

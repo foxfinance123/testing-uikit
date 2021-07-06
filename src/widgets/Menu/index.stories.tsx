@@ -24,13 +24,11 @@ export const Connected: React.FC = () => {
         account="0xbdda50183d817c3289f895a4472eb475967dc980"
         login={noop}
         logout={noop}
-        logoText="Test"
         isDark={false}
         toggleTheme={noop}
         langs={langs}
         setLang={noop}
         currentLang="EN"
-        priceLink=""
         cakePriceUsd={0.23158668932877668}
         links={links}
         profile={null}

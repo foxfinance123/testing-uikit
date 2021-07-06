@@ -1,105 +1,113 @@
-interface Edition {
-  key: string;
-  tokenAddress: string;
-  referrals: {
-    enabled: boolean;
-  };
-}
-
-export function getMenuLinks(edition: Edition) {
-  const isExchange = edition.key === "exchange";
-  const farmUrl = isExchange ? `https://${edition.key}.worldswap.finance/` : "/";
-
-  return [
-    {
-      label: "Editions",
-      icon: "LayerIcon",
-      items: [
-        {
-          label: "Dublin 🇮🇪",
-          href: "https://dublin.worldswap.finance",
-        },
-        {
-          label: "Amsterdam 🇳🇱",
-          href: "https://amsterdam.worldswap.finance",
-        },
-      ],
-    },
-    {
-      label: "Home",
-      icon: "HomeIcon",
-      href: farmUrl,
-    },
-    {
-      label: "Exchange",
-      href: `https://exchange.pancakeswap.com/#/swap?outputCurrency=${edition.tokenAddress}`,
-      icon: "ExchangeIcon",
-    },
-    {
-      label: "Liquidity",
-      href: "https://exchange.pancakeswap.com/#/pool",
-      icon: "LiquidityIcon",
-    },
-    {
-      label: "Farms",
-      icon: "FarmIcon",
-      href: `${farmUrl}farms`,
-    },
-    {
-      label: "Pools",
-      icon: "PoolIcon",
-      href: `${farmUrl}pools`,
-    },
-    {
-      label: "Referrals",
-      icon: "GroupsIcon",
-      href: `${farmUrl}referrals`,
-    },
-    // {
-    //   label: 'Lottery',
-    //   icon: 'TicketIcon',
-    //   href: '/lottery',
-    // },
-    // {
-    //   label: 'NFT',
-    //   icon: 'NftIcon',
-    //   href: '/nft',
-    // },
-    {
-      label: "Info",
-      icon: "InfoIcon",
-      items: [
-        {
-          label: "PooCoin",
-          href: `https://poocoin.app/tokens/${edition.tokenAddress}`,
-        },
-        {
-          label: "PancakeSwap",
-          href: `https://pancakeswap.info/token/${edition.tokenAddress}`,
-        },
-      ],
-    },
-    {
-      label: "More",
-      icon: "MoreIcon",
-      items: [
-        {
-          label: "Github",
-          href: "https://github.com/WorldSwap",
-        },
-        {
-          label: "Docs",
-          href: "https://docs.worldswap.finance",
-        },
-      ],
-    },
-    {
-      label: "Audit",
-      icon: "AuditIcon",
-      href: "https://github.com/TechRate/Smart-Contract-Audits/blob/main/Worldswap.pdf",
-    },
-  ].filter((item) => item.label !== "Referrals" || edition?.referrals.enabled);
-}
+export const links = [
+  {
+    label: "Home",
+    icon: "HomeIcon",
+    href: "/",
+  },
+  {
+    label: "Trade",
+    icon: "TradeIcon",
+    items: [
+      {
+        label: "Exchange",
+        href: "https://exchange.pancakeswap.finance",
+      },
+      {
+        label: "Liquidity",
+        href: "https://exchange.pancakeswap.finance/#/pool",
+      },
+    ],
+  },
+  {
+    label: "Farms",
+    icon: "FarmIcon",
+    href: "/farms",
+  },
+  {
+    label: "Pools",
+    icon: "PoolIcon",
+    href: "/syrup",
+  },
+  {
+    label: "Lottery",
+    icon: "TicketIcon",
+    href: "/lottery",
+  },
+  {
+    label: "NFT",
+    icon: "NftIcon",
+    href: "/nft",
+  },
+  {
+    label: "Profile & Teams",
+    icon: "GroupsIcon",
+    items: [
+      {
+        label: "Leaderboard",
+        href: "/",
+      },
+      {
+        label: "YourProfile",
+        href: "/",
+      },
+    ],
+    calloutClass: "rainbow",
+  },
+  {
+    label: "Info",
+    icon: "InfoIcon",
+    items: [
+      {
+        label: "Overview",
+        href: "https://pancakeswap.info",
+      },
+      {
+        label: "Tokens",
+        href: "https://pancakeswap.info/tokens",
+      },
+      {
+        label: "Pairs",
+        href: "https://pancakeswap.info/pairs",
+      },
+      {
+        label: "Accounts",
+        href: "https://pancakeswap.info/accounts",
+      },
+    ],
+  },
+  {
+    label: "IFO",
+    icon: "IfoIcon",
+    items: [
+      {
+        label: "Next",
+        href: "/ifo",
+      },
+      {
+        label: "History",
+        href: "/ifo/history",
+      },
+    ],
+  },
+  {
+    label: "More",
+    icon: "MoreIcon",
+    items: [
+      // {
+      //   label: "Voting",
+      //   href: "https://voting.pancakeswap.finance",
+      // },
+      {
+        label: "Github",
+        href: "https://github.com/foxfinance123/",
+      },
+      {
+        label: "Docs",
+        href: "https://foxfinance.gitbook.io/foxfinance/",
+      },
+    ],
+  },
+];
 
 export const socials = [
   {
@@ -108,24 +116,15 @@ export const socials = [
     items: [
       {
         label: "English",
-        href: "https://t.me/WorldSwapFinance",
+        href: "https://t.me/fox_finance_bsc",
       },
-      // {
-      //   label: "Announcements",
-      //   href: "https://t.me/",
-      // },
     ],
   },
   {
     label: "Twitter",
     icon: "TwitterIcon",
-    href: "https://twitter.com/WorldSwap",
+    href: "https://twitter.com/FoxFinance2",
   },
-  // {
-  //   label: "Reddit",
-  //   icon: "RedditIcon",
-  //   href: "https://www.reddit.com/r/",
-  // },
 ];
 
 export const MENU_HEIGHT = 64;

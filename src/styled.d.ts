@@ -1,7 +1,7 @@
 import "styled-components";
-import { WorldSwapTheme } from "./theme";
+import { PancakeTheme } from "./theme";
 
 declare module "styled-components" {
   /* eslint-disable @typescript-eslint/no-empty-interface */
-  export interface DefaultTheme extends WorldSwapTheme {}
+  export interface DefaultTheme extends PancakeTheme {}
 }
