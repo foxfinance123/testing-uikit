@@ -120,7 +120,20 @@ const Menu: React.FC<NavProps> = ({
           isDark={isDark}
           href={homeLink?.href ?? "/"}
         />
-
+        <Panel
+            isPushed={isPushed}
+            isMobile={isMobile}
+            showMenu={showMenu}
+            isDark={isDark}
+            toggleTheme={toggleTheme}
+            langs={langs}
+            setLang={setLang}
+            currentLang={currentLang}
+            cakePriceUsd={cakePriceUsd}
+            pushNav={setIsPushed}
+            links={links}
+            priceLink={priceLink}
+        />
         <Flex>
           <UserBlock account={account} login={login} logout={logout} />
           {profile && <Avatar profile={profile} />}
