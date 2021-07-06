@@ -6,17 +6,10 @@ import { Flex } from "../../components/Flex";
 import { useMatchBreakpoints } from "../../hooks";
 import Logo from "./Logo";
 import Panel from "./Panel";
-import PanelBody from "./PanelBody";
 import UserBlock from "./UserBlock";
 import { NavProps } from "./types";
 import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
 import Avatar from "./Avatar";
-import { PanelProps, PushedProps } from "./types";
-
-interface Props extends PanelProps, PushedProps {
-  showMenu: boolean;
-  isMobile: boolean;
-}
 
 const Wrapper = styled.div`
   position: relative;
@@ -127,7 +120,7 @@ const Menu: React.FC<NavProps> = ({
           isDark={isDark}
           href={homeLink?.href ?? "/"}
         />
-        <PanelBody {...props} />
+
         <Flex>
           <UserBlock account={account} login={login} logout={logout} />
           {profile && <Avatar profile={profile} />}
