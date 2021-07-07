@@ -7,6 +7,7 @@ import { HamburgerIcon, HamburgerCloseIcon, LogoIcon as LogoWithText } from "./i
 import MenuButton from "./MenuButton";
 
 interface Props {
+  isMobile: boolean;
   isPushed: boolean;
   isDark: boolean;
   togglePush: () => void;
@@ -29,14 +30,9 @@ const StyledLink = styled(Link)`
       display: block;
     }
   }
-  .mobile-hamburger-icon {
-    ${({ theme }) => theme.mediaQueries.nav} {
-        display: none;
-    }
-  }
 `;
 
-const Logo: React.FC<Props> = ({ isPushed, togglePush, isDark, href }) => {
+const Logo: React.FC<Props> = ({ isMobile, isPushed, togglePush, isDark, href }) => {
   const isAbsoluteUrl = href.startsWith("http");
   const innerLogo = (
     <>
@@ -47,13 +43,15 @@ const Logo: React.FC<Props> = ({ isPushed, togglePush, isDark, href }) => {
 
   return (
     <Flex>
-      <MenuButton aria-label="Toggle menu" onClick={togglePush} mr="24px">
-          {isPushed && (
-              <HamburgerCloseIcon width="24px" color="primary" />
-          )
-          }
-          <HamburgerIcon className="mobile-hamburger-icon" width="24px" color="primary" />
-      </MenuButton>
+        {isMobile &&
+        <MenuButton aria-label="Toggle menu" onClick={togglePush} mr="24px">
+            {isPushed ? (
+                <HamburgerCloseIcon width="24px" color="primary"/>
+            ) : (
+                <HamburgerIcon width="24px" color="primary"/>
+            )}
+        </MenuButton>
+        }
       {isAbsoluteUrl ? (
         <StyledLink as="a" href={href} aria-label="FoxFinance home page">
           {innerLogo}
