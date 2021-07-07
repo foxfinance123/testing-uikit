@@ -29,6 +29,11 @@ const StyledLink = styled(Link)`
       display: block;
     }
   }
+  .mobile-hamburger-icon {
+    ${({ theme }) => theme.mediaQueries.nav} {
+        display: none;
+    }
+  }
 `;
 
 const Logo: React.FC<Props> = ({ isPushed, togglePush, isDark, href }) => {
@@ -47,6 +52,7 @@ const Logo: React.FC<Props> = ({ isPushed, togglePush, isDark, href }) => {
               <HamburgerCloseIcon width="24px" color="primary" />
           )
           }
+          <HamburgerIcon className="mobile-hamburger-icon" width="24px" color="primary" />
       </MenuButton>
       {isAbsoluteUrl ? (
         <StyledLink as="a" href={href} aria-label="FoxFinance home page">
