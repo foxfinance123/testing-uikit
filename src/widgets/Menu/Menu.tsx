@@ -8,14 +8,16 @@ import Logo from "./Logo";
 import Panel from "./Panel";
 import UserBlock from "./UserBlock";
 import { NavProps } from "./types";
-import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
+import {MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL, socials, MENU_ENTRY_HEIGHT} from "./config";
 import Avatar from "./Avatar";
 import {LinkLabel, MenuEntry} from "./MenuEntry";
 import MenuLink from "./MenuLink";
 import * as IconModule from "./icons";
-import {SvgProps} from "../../components/Svg";
+import {PancakeRoundIcon, SvgProps} from "../../components/Svg";
 import {Dropdown} from "../../components/Dropdown";
 import Link from "../../components/Link/Link";
+import Text from "../../components/Text/Text";
+import Skeleton from "../../components/Skeleton/Skeleton";
 
 const Wrapper = styled.div`
   position: relative;
@@ -58,6 +60,27 @@ const MobileOnlyOverlay = styled(Overlay)`
 
   ${({ theme }) => theme.mediaQueries.nav} {
     display: none;
+  }
+`;
+
+const SocialEntry = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: ${MENU_ENTRY_HEIGHT}px;
+  padding: 0 16px;
+`;
+
+const PriceLink = styled.a`
+  display: flex;
+  align-items: center;
+  svg {
+    transition: transform 0.3s;
+  }
+  :hover {
+    svg {
+      transform: scale(1.2);
+    }
   }
 `;
 
@@ -165,6 +188,40 @@ const Menu: React.FC<NavProps> = ({
                     return (null);
 
                 })}
+
+                <SocialEntry>
+                    {cakePriceUsd ? (
+                        <PriceLink href={priceLink} target="_blank">
+                            <PancakeRoundIcon width="24px" mr="8px" />
+                            <Text color="textSubtle" bold>{`$${cakePriceUsd.toFixed(3)}`}</Text>
+                        </PriceLink>
+                    ) : (
+                        <Skeleton width={80} height={24} />
+                    )}
+                    <Flex>
+                        {socials.map((social, index) => {
+                            const Icon = Icons[social.icon];
+                            const iconProps = { width: "24px", color: "textSubtle", style: { cursor: "pointer" } };
+                            const mr = index < socials.length - 1 ? "8px" : 0;
+                            if (social.items) {
+                                return (
+                                    <Dropdown key={social.label} position="top" target={<Icon {...iconProps} mr={mr} />}>
+                                        {social.items.map((item) => (
+                                            <Link external key={item.label} href={item.href} aria-label={item.label} color="textSubtle">
+                                                {item.label}
+                                            </Link>
+                                        ))}
+                                    </Dropdown>
+                                );
+                            }
+                            return (
+                                <Link external key={social.label} href={social.href} aria-label={social.label} mr={mr}>
+                                    <Icon {...iconProps} />
+                                </Link>
+                            );
+                        })}
+                    </Flex>
+                </SocialEntry>
 
                 <Flex>
                     <UserBlock account={account} login={login} logout={logout} />
