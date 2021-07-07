@@ -2676,9 +2676,25 @@ var Menu = function (_a) {
     }, []);
     // Find the home link if provided
     var homeLink = links.find(function (link) { return link.label === "Home"; });
+    var Icons = IconModule;
     return (React.createElement(Wrapper$1, null,
         React.createElement(StyledNav, { showMenu: showMenu },
             React.createElement(Logo$1, { isMobile: isMobile, isPushed: isPushed, togglePush: function () { return setIsPushed(function (prevState) { return !prevState; }); }, isDark: isDark, href: (_b = homeLink === null || homeLink === void 0 ? void 0 : homeLink.href) !== null && _b !== void 0 ? _b : "/" }),
+            links.map(function (entry) {
+                var Icon = Icons[entry.icon];
+                var iconElement = React.createElement(Icon, { width: "24px", mr: "8px" });
+                var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
+                var handleClick = isMobile ? function () { return setIsPushed(false); } : undefined;
+                if (entry.items) {
+                    return (React.createElement(Accordion, { key: entry.label, isPushed: isPushed, pushNav: setIsPushed, icon: iconElement, label: entry.label, initialOpenState: entry.initialOpenState, className: calloutClass }, isPushed &&
+                        entry.items.map(function (item) { return (React.createElement(MenuEntry, { key: item.href, secondary: true, isActive: item.href === location.pathname, onClick: handleClick },
+                            React.createElement(MenuLink, { href: item.href }, item.label))); })));
+                }
+                return (React.createElement(MenuEntry, { key: entry.label, isActive: entry.href === location.pathname, className: calloutClass },
+                    React.createElement(MenuLink, { href: entry.href, onClick: handleClick },
+                        iconElement,
+                        React.createElement(LinkLabel, { isPushed: isPushed }, entry.label))));
+            }),
             React.createElement(Flex, null,
                 React.createElement(UserBlock, { account: account, login: login, logout: logout }),
                 profile && React.createElement(Avatar, { profile: profile }))),

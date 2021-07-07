@@ -10,6 +10,11 @@ import UserBlock from "./UserBlock";
 import { NavProps } from "./types";
 import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
 import Avatar from "./Avatar";
+import Accordion from "../../../../compiled/src/widgets/Menu/Accordion";
+import {LinkLabel, MenuEntry} from "../../../../compiled/src/widgets/Menu/MenuEntry";
+import MenuLink from "../../../../compiled/src/widgets/Menu/MenuLink";
+import * as IconModule from "../../../../compiled/src/widgets/Menu/icons";
+import {SvgProps} from "../../../../compiled/src/components/Svg";
 
 const Wrapper = styled.div`
   position: relative;
@@ -108,6 +113,8 @@ const Menu: React.FC<NavProps> = ({
   // Find the home link if provided
   const homeLink = links.find((link) => link.label === "Home");
 
+  const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
+
   return (
     <Wrapper>
       <StyledNav showMenu={showMenu}>
@@ -119,6 +126,42 @@ const Menu: React.FC<NavProps> = ({
           href={homeLink?.href ?? "/"}
         />
 
+        {links.map((entry:any) => {
+          const Icon = Icons[entry.icon];
+          const iconElement = <Icon width="24px" mr="8px" />;
+          const calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
+
+          const handleClick = isMobile ? () => setIsPushed(false) : undefined;
+
+          if (entry.items) {
+            return (
+                <Accordion
+                    key={entry.label}
+                    isPushed={isPushed}
+                    pushNav={setIsPushed}
+                    icon={iconElement}
+                    label={entry.label}
+                    initialOpenState={entry.initialOpenState}
+                    className={calloutClass}
+                >
+                  {isPushed &&
+                  entry.items.map((item:any) => (
+                      <MenuEntry key={item.href} secondary isActive={item.href === location.pathname} onClick={handleClick}>
+                        <MenuLink href={item.href}>{item.label}</MenuLink>
+                      </MenuEntry>
+                  ))}
+                </Accordion>
+            );
+          }
+          return (
+              <MenuEntry key={entry.label} isActive={entry.href === location.pathname} className={calloutClass}>
+                <MenuLink href={entry.href} onClick={handleClick}>
+                  {iconElement}
+                  <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
+                </MenuLink>
+              </MenuEntry>
+          );
+        })}
         <Flex>
           <UserBlock account={account} login={login} logout={logout} />
           {profile && <Avatar profile={profile} />}
