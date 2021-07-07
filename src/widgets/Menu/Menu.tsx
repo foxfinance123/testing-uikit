@@ -128,54 +128,42 @@ const Menu: React.FC<NavProps> = ({
                 />
 
                 { !isMobile && links.map((entry:any) => {
-                    const Icon = Icons[entry.icon];
-                    const iconElement = <Icon width="24px" mr="8px" />;
-                    const calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
+                    if (entry.showDesktop) {
+                        const Icon = Icons[entry.icon];
+                        const iconElement = <Icon width="24px" mr="8px"/>;
+                        const calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
 
-                    // const handleClick = isMobile ? () => setIsPushed(false) : undefined;
-
-                    if (entry.items) {
+                        if (entry.items) {
+                            return (
+                                <Dropdown key={entry.label} position="bottom" target={
+                                    <MenuEntry key={entry.label} isActive={false} className={calloutClass}>
+                                        {iconElement}
+                                        <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
+                                    </MenuEntry>
+                                }>
+                                    {entry.items.map((item: any) => (
+                                        <MenuEntry key={item.href} isActive={false}>
+                                            <Link external key={item.label} href={item.href} aria-label={item.label}
+                                                  color="textSubtle">
+                                                {item.label}
+                                            </Link>
+                                        </MenuEntry>
+                                    ))}
+                                </Dropdown>
+                            );
+                        }
                         return (
-                            <Dropdown key={entry.label} position="bottom" target={
-                                <MenuEntry key={entry.label} isActive={false} className={calloutClass}>
+                            <MenuEntry key={entry.label} isActive={entry.href === location.pathname}
+                                       className={calloutClass}>
+                                <MenuLink href={entry.href}>
                                     {iconElement}
                                     <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
-                                </MenuEntry>
-                            }>
-                                {entry.items.map((item:any) => (
-                                    <MenuEntry key={item.href} isActive={false}>
-                                        <Link external key={item.label} href={item.href} aria-label={item.label} color="textSubtle">
-                                            {item.label}
-                                        </Link>
-                                    </MenuEntry>
-                                ))}
-                            </Dropdown>
-                            // <Accordion2
-                            //     key={entry.label}
-                            //     isPushed={isPushed}
-                            //     pushNav={setIsPushed}
-                            //     icon={iconElement}
-                            //     label={entry.label}
-                            //     initialOpenState={entry.initialOpenState}
-                            //     className={calloutClass}
-                            // >
-                            //   {isPushed &&
-                            //   entry.items.map((item:any) => (
-                            //       <MenuEntry key={item.href} secondary isActive={item.href === location.pathname}>
-                            //         <MenuLink href={item.href}>{item.label}</MenuLink>
-                            //       </MenuEntry>
-                            //   ))}
-                            // </Accordion2>
+                                </MenuLink>
+                            </MenuEntry>
                         );
                     }
-                    return (
-                        <MenuEntry key={entry.label} isActive={entry.href === location.pathname} className={calloutClass}>
-                            <MenuLink href={entry.href}>
-                                {iconElement}
-                                <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
-                            </MenuLink>
-                        </MenuEntry>
-                    );
+                    return (null);
+
                 })}
 
                 <Flex>

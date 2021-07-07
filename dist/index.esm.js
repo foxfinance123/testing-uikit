@@ -2691,19 +2691,22 @@ var Menu = function (_a) {
         React.createElement(StyledNav, { showMenu: showMenu },
             React.createElement(Logo$1, { isMobile: isMobile, isPushed: isPushed, togglePush: function () { return setIsPushed(function (prevState) { return !prevState; }); }, isDark: isDark, href: (_b = homeLink === null || homeLink === void 0 ? void 0 : homeLink.href) !== null && _b !== void 0 ? _b : "/" }),
             !isMobile && links.map(function (entry) {
-                var Icon = Icons[entry.icon];
-                var iconElement = React.createElement(Icon, { width: "24px", mr: "8px" });
-                var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
-                if (entry.items) {
-                    return (React.createElement(Dropdown, { key: entry.label, position: "bottom", target: React.createElement(MenuEntry, { key: entry.label, isActive: false, className: calloutClass },
+                if (entry.showDesktop) {
+                    var Icon = Icons[entry.icon];
+                    var iconElement = React.createElement(Icon, { width: "24px", mr: "8px" });
+                    var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
+                    if (entry.items) {
+                        return (React.createElement(Dropdown, { key: entry.label, position: "bottom", target: React.createElement(MenuEntry, { key: entry.label, isActive: false, className: calloutClass },
+                                iconElement,
+                                React.createElement(LinkLabel, { isPushed: isPushed }, entry.label)) }, entry.items.map(function (item) { return (React.createElement(MenuEntry, { key: item.href, isActive: false },
+                            React.createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label))); })));
+                    }
+                    return (React.createElement(MenuEntry, { key: entry.label, isActive: entry.href === location.pathname, className: calloutClass },
+                        React.createElement(MenuLink, { href: entry.href },
                             iconElement,
-                            React.createElement(LinkLabel, { isPushed: isPushed }, entry.label)) }, entry.items.map(function (item) { return (React.createElement(MenuEntry, { key: item.href, isActive: false },
-                        React.createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label))); })));
+                            React.createElement(LinkLabel, { isPushed: isPushed }, entry.label))));
                 }
-                return (React.createElement(MenuEntry, { key: entry.label, isActive: entry.href === location.pathname, className: calloutClass },
-                    React.createElement(MenuLink, { href: entry.href },
-                        iconElement,
-                        React.createElement(LinkLabel, { isPushed: isPushed }, entry.label))));
+                return (null);
             }),
             React.createElement(Flex, null,
                 React.createElement(UserBlock, { account: account, login: login, logout: logout }),
