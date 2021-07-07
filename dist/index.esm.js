@@ -2233,7 +2233,7 @@ var MenuEntry = styled.div(templateObject_3$6 || (templateObject_3$6 = __makeTem
     return theme.colors.textSubtle;
 }, function (_a) {
     var isActive = _a.isActive, theme = _a.theme;
-    return (isActive ? "inset 4px 0px 0px " + theme.colors.primary : "none");
+    return (isActive ? "inset 0px 4px 0px " + theme.colors.primary : "none");
 }, function (_a) {
     var theme = _a.theme;
     return theme.colors.primary;
@@ -2680,18 +2680,17 @@ var Menu = function (_a) {
     return (React.createElement(Wrapper$1, null,
         React.createElement(StyledNav, { showMenu: showMenu },
             React.createElement(Logo$1, { isMobile: isMobile, isPushed: isPushed, togglePush: function () { return setIsPushed(function (prevState) { return !prevState; }); }, isDark: isDark, href: (_b = homeLink === null || homeLink === void 0 ? void 0 : homeLink.href) !== null && _b !== void 0 ? _b : "/" }),
-            links.map(function (entry) {
+            !isMobile && links.map(function (entry) {
                 var Icon = Icons[entry.icon];
                 var iconElement = React.createElement(Icon, { width: "24px", mr: "8px" });
                 var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
-                var handleClick = isMobile ? function () { return setIsPushed(false); } : undefined;
                 if (entry.items) {
                     return (React.createElement(Accordion, { key: entry.label, isPushed: isPushed, pushNav: setIsPushed, icon: iconElement, label: entry.label, initialOpenState: entry.initialOpenState, className: calloutClass }, isPushed &&
-                        entry.items.map(function (item) { return (React.createElement(MenuEntry, { key: item.href, secondary: true, isActive: item.href === location.pathname, onClick: handleClick },
+                        entry.items.map(function (item) { return (React.createElement(MenuEntry, { key: item.href, secondary: true, isActive: item.href === location.pathname },
                             React.createElement(MenuLink, { href: item.href }, item.label))); })));
                 }
                 return (React.createElement(MenuEntry, { key: entry.label, isActive: entry.href === location.pathname, className: calloutClass },
-                    React.createElement(MenuLink, { href: entry.href, onClick: handleClick },
+                    React.createElement(MenuLink, { href: entry.href },
                         iconElement,
                         React.createElement(LinkLabel, { isPushed: isPushed }, entry.label))));
             }),

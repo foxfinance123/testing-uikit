@@ -126,7 +126,7 @@ const Menu: React.FC<NavProps> = ({
           href={homeLink?.href ?? "/"}
         />
 
-        {links.map((entry:any) => {
+        { !isMobile && links.map((entry:any) => {
           const Icon = Icons[entry.icon];
           const iconElement = <Icon width="24px" mr="8px" />;
           const calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
@@ -146,7 +146,7 @@ const Menu: React.FC<NavProps> = ({
                 >
                   {isPushed &&
                   entry.items.map((item:any) => (
-                      <MenuEntry key={item.href} secondary isActive={item.href === location.pathname} onClick={handleClick}>
+                      <MenuEntry key={item.href} secondary isActive={item.href === location.pathname}>
                         <MenuLink href={item.href}>{item.label}</MenuLink>
                       </MenuEntry>
                   ))}
@@ -155,7 +155,7 @@ const Menu: React.FC<NavProps> = ({
           }
           return (
               <MenuEntry key={entry.label} isActive={entry.href === location.pathname} className={calloutClass}>
-                <MenuLink href={entry.href} onClick={handleClick}>
+                <MenuLink href={entry.href}>
                   {iconElement}
                   <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
                 </MenuLink>
