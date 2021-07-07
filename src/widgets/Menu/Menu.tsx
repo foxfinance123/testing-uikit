@@ -11,10 +11,13 @@ import { NavProps } from "./types";
 import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
 import Avatar from "./Avatar";
 import Accordion from "../../../../compiled/src/widgets/Menu/Accordion";
+import Accordion2 from "../../../../compiled/src/widgets/Menu/Accordion2";
 import {LinkLabel, MenuEntry} from "../../../../compiled/src/widgets/Menu/MenuEntry";
 import MenuLink from "../../../../compiled/src/widgets/Menu/MenuLink";
 import * as IconModule from "../../../../compiled/src/widgets/Menu/icons";
 import {SvgProps} from "../../../../compiled/src/components/Svg";
+import {Dropdown} from "../../components/Dropdown";
+import Link from "../../components/Link/Link";
 
 const Wrapper = styled.div`
   position: relative;
@@ -61,20 +64,20 @@ const MobileOnlyOverlay = styled(Overlay)`
 `;
 
 const Menu: React.FC<NavProps> = ({
-  account,
-  login,
-  logout,
-  isDark,
-  toggleTheme,
-  langs,
-  setLang,
-  currentLang,
-  cakePriceUsd,
-  links,
-  priceLink,
-  profile,
-  children,
-}) => {
+                                    account,
+                                    login,
+                                    logout,
+                                    isDark,
+                                    toggleTheme,
+                                    langs,
+                                    setLang,
+                                    currentLang,
+                                    cakePriceUsd,
+                                    links,
+                                    priceLink,
+                                    profile,
+                                    children,
+                                  }) => {
   const { isXl } = useMatchBreakpoints();
   const isMobile = isXl === false;
   const [isPushed, setIsPushed] = useState(!isMobile);
@@ -116,82 +119,90 @@ const Menu: React.FC<NavProps> = ({
   const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
 
   return (
-    <Wrapper>
-      <StyledNav showMenu={showMenu}>
-        <Logo
-          isMobile={isMobile}
-          isPushed={isPushed}
-          togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
-          isDark={isDark}
-          href={homeLink?.href ?? "/"}
-        />
-        { !isMobile && links.map((entry:any) => {
-          const Icon = Icons[entry.icon];
-          const iconElement = <Icon width="24px" mr="8px" />;
-          const calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
+      <Wrapper>
+        <StyledNav showMenu={showMenu}>
+          <Logo
+              isMobile={isMobile}
+              isPushed={isPushed}
+              togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
+              isDark={isDark}
+              href={homeLink?.href ?? "/"}
+          />
 
-          const handleClick = isMobile ? () => setIsPushed(false) : undefined;
+          { !isMobile && links.map((entry:any) => {
+            const Icon = Icons[entry.icon];
+            const iconElement = <Icon width="24px" mr="8px" />;
+            const calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
 
-          if (entry.items) {
+            // const handleClick = isMobile ? () => setIsPushed(false) : undefined;
+
+            if (entry.items) {
+              return (
+                  <Dropdown key={entry.label} position="top" target={<Icon {...iconElement} />}>
+                    {entry.items.map((item:any) => (
+                        <Link external key={item.label} href={item.href} aria-label={item.label} color="textSubtle">
+                          {item.label}
+                        </Link>
+                    ))}
+                  </Dropdown>
+                  // <Accordion2
+                  //     key={entry.label}
+                  //     isPushed={isPushed}
+                  //     pushNav={setIsPushed}
+                  //     icon={iconElement}
+                  //     label={entry.label}
+                  //     initialOpenState={entry.initialOpenState}
+                  //     className={calloutClass}
+                  // >
+                  //   {isPushed &&
+                  //   entry.items.map((item:any) => (
+                  //       <MenuEntry key={item.href} secondary isActive={item.href === location.pathname}>
+                  //         <MenuLink href={item.href}>{item.label}</MenuLink>
+                  //       </MenuEntry>
+                  //   ))}
+                  // </Accordion2>
+              );
+            }
             return (
-                <Accordion
-                    key={entry.label}
-                    isPushed={isPushed}
-                    pushNav={setIsPushed}
-                    icon={iconElement}
-                    label={entry.label}
-                    initialOpenState={entry.initialOpenState}
-                    className={calloutClass}
-                >
-                  {isPushed &&
-                  entry.items.map((item:any) => (
-                      <MenuEntry key={item.href} secondary isActive={item.href === location.pathname}>
-                        <MenuLink href={item.href}>{item.label}</MenuLink>
-                      </MenuEntry>
-                  ))}
-                </Accordion>
+                <MenuEntry key={entry.label} isActive={entry.href === location.pathname} className={calloutClass}>
+                  <MenuLink href={entry.href}>
+                    {iconElement}
+                    <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
+                  </MenuLink>
+                </MenuEntry>
             );
+          })}
+
+          <Flex>
+            <UserBlock account={account} login={login} logout={logout} />
+            {profile && <Avatar profile={profile} />}
+          </Flex>
+        </StyledNav>
+
+        <BodyWrapper>
+          {isMobile &&
+          <Panel
+              isPushed={isPushed}
+              isMobile={isMobile}
+              showMenu={showMenu}
+              isDark={isDark}
+              toggleTheme={toggleTheme}
+              langs={langs}
+              setLang={setLang}
+              currentLang={currentLang}
+              cakePriceUsd={cakePriceUsd}
+              pushNav={setIsPushed}
+              links={links}
+              priceLink={priceLink}
+          />
           }
-          return (
-              <MenuEntry key={entry.label} isActive={entry.href === location.pathname} className={calloutClass}>
-                <MenuLink href={entry.href}>
-                  {iconElement}
-                  <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
-                </MenuLink>
-              </MenuEntry>
-          );
-        })}
+          <Inner isPushed={isPushed} showMenu={showMenu}>
+            {children}
+          </Inner>
+          <MobileOnlyOverlay show={isPushed} onClick={() => setIsPushed(false)} role="presentation"/>
+        </BodyWrapper>
 
-        <Flex>
-          <UserBlock account={account} login={login} logout={logout} />
-          {profile && <Avatar profile={profile} />}
-        </Flex>
-      </StyledNav>
-
-      <BodyWrapper>
-        {isMobile &&
-        <Panel
-            isPushed={isPushed}
-            isMobile={isMobile}
-            showMenu={showMenu}
-            isDark={isDark}
-            toggleTheme={toggleTheme}
-            langs={langs}
-            setLang={setLang}
-            currentLang={currentLang}
-            cakePriceUsd={cakePriceUsd}
-            pushNav={setIsPushed}
-            links={links}
-            priceLink={priceLink}
-        />
-        }
-        <Inner isPushed={isPushed} showMenu={showMenu}>
-          {children}
-        </Inner>
-        <MobileOnlyOverlay show={isPushed} onClick={() => setIsPushed(false)} role="presentation"/>
-      </BodyWrapper>
-
-    </Wrapper>
+      </Wrapper>
   );
 };
 
