@@ -196,6 +196,8 @@ const Menu: React.FC<NavProps> = ({
                     return (null);
 
                 })}
+
+                {!isMobile &&
                 <Container>
                     <SocialEntry>
                         {cakePriceUsd ? (
@@ -203,18 +205,20 @@ const Menu: React.FC<NavProps> = ({
                                 <Text color="textSubtle" bold>{`$${cakePriceUsd.toFixed(3)}`}</Text>
                             </PriceLink>
                         ) : (
-                            <Skeleton width={80} height={24} />
+                            <Skeleton width={80} height={24}/>
                         )}
                         <Flex>
                             {socials.map((social, index) => {
                                 const Icon = Icons[social.icon];
-                                const iconProps = { width: "24px", color: "textSubtle", style: { cursor: "pointer" } };
+                                const iconProps = {width: "24px", color: "textSubtle", style: {cursor: "pointer"}};
                                 const mr = index < socials.length - 1 ? "8px" : 0;
                                 if (social.items) {
                                     return (
-                                        <Dropdown key={social.label} position="bottom" target={<Icon {...iconProps} mr={mr} />}>
+                                        <Dropdown key={social.label} position="bottom"
+                                                  target={<Icon {...iconProps} mr={mr}/>}>
                                             {social.items.map((item) => (
-                                                <Link external key={item.label} href={item.href} aria-label={item.label} color="textSubtle">
+                                                <Link external key={item.label} href={item.href} aria-label={item.label}
+                                                      color="textSubtle">
                                                     {item.label}
                                                 </Link>
                                             ))}
@@ -222,7 +226,8 @@ const Menu: React.FC<NavProps> = ({
                                     );
                                 }
                                 return (
-                                    <Link external key={social.label} href={social.href} aria-label={social.label} mr={mr}>
+                                    <Link external key={social.label} href={social.href} aria-label={social.label}
+                                          mr={mr}>
                                         <Icon {...iconProps} />
                                     </Link>
                                 );
@@ -230,6 +235,7 @@ const Menu: React.FC<NavProps> = ({
                         </Flex>
                     </SocialEntry>
                 </Container>
+                }
 
                 <Flex>
                     <UserBlock account={account} login={login} logout={logout} />

@@ -2714,20 +2714,21 @@ var Menu = function (_a) {
                 }
                 return (null);
             }),
-            React.createElement(Container$5, null,
-                React.createElement(SocialEntry$1, null,
-                    cakePriceUsd ? (React.createElement(PriceLink$1, { href: priceLink, target: "_blank" },
-                        React.createElement(Text, { color: "textSubtle", bold: true }, "$" + cakePriceUsd.toFixed(3)))) : (React.createElement(Skeleton, { width: 80, height: 24 })),
-                    React.createElement(Flex, null, socials.map(function (social, index) {
-                        var Icon = Icons[social.icon];
-                        var iconProps = { width: "24px", color: "textSubtle", style: { cursor: "pointer" } };
-                        var mr = index < socials.length - 1 ? "8px" : 0;
-                        if (social.items) {
-                            return (React.createElement(Dropdown, { key: social.label, position: "bottom", target: React.createElement(Icon, __assign({}, iconProps, { mr: mr })) }, social.items.map(function (item) { return (React.createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label)); })));
-                        }
-                        return (React.createElement(Link, { external: true, key: social.label, href: social.href, "aria-label": social.label, mr: mr },
-                            React.createElement(Icon, __assign({}, iconProps))));
-                    })))),
+            !isMobile &&
+                React.createElement(Container$5, null,
+                    React.createElement(SocialEntry$1, null,
+                        cakePriceUsd ? (React.createElement(PriceLink$1, { href: priceLink, target: "_blank" },
+                            React.createElement(Text, { color: "textSubtle", bold: true }, "$" + cakePriceUsd.toFixed(3)))) : (React.createElement(Skeleton, { width: 80, height: 24 })),
+                        React.createElement(Flex, null, socials.map(function (social, index) {
+                            var Icon = Icons[social.icon];
+                            var iconProps = { width: "24px", color: "textSubtle", style: { cursor: "pointer" } };
+                            var mr = index < socials.length - 1 ? "8px" : 0;
+                            if (social.items) {
+                                return (React.createElement(Dropdown, { key: social.label, position: "bottom", target: React.createElement(Icon, __assign({}, iconProps, { mr: mr })) }, social.items.map(function (item) { return (React.createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label)); })));
+                            }
+                            return (React.createElement(Link, { external: true, key: social.label, href: social.href, "aria-label": social.label, mr: mr },
+                                React.createElement(Icon, __assign({}, iconProps))));
+                        })))),
             React.createElement(Flex, null,
                 React.createElement(UserBlock, { account: account, login: login, logout: logout }),
                 profile && React.createElement(Avatar, { profile: profile }))),

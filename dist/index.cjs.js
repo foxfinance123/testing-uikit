@@ -2727,20 +2727,21 @@ var Menu = function (_a) {
                 }
                 return (null);
             }),
-            React__default['default'].createElement(Container$5, null,
-                React__default['default'].createElement(SocialEntry$1, null,
-                    cakePriceUsd ? (React__default['default'].createElement(PriceLink$1, { href: priceLink, target: "_blank" },
-                        React__default['default'].createElement(Text, { color: "textSubtle", bold: true }, "$" + cakePriceUsd.toFixed(3)))) : (React__default['default'].createElement(Skeleton, { width: 80, height: 24 })),
-                    React__default['default'].createElement(Flex, null, socials.map(function (social, index) {
-                        var Icon = Icons[social.icon];
-                        var iconProps = { width: "24px", color: "textSubtle", style: { cursor: "pointer" } };
-                        var mr = index < socials.length - 1 ? "8px" : 0;
-                        if (social.items) {
-                            return (React__default['default'].createElement(Dropdown, { key: social.label, position: "bottom", target: React__default['default'].createElement(Icon, __assign({}, iconProps, { mr: mr })) }, social.items.map(function (item) { return (React__default['default'].createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label)); })));
-                        }
-                        return (React__default['default'].createElement(Link, { external: true, key: social.label, href: social.href, "aria-label": social.label, mr: mr },
-                            React__default['default'].createElement(Icon, __assign({}, iconProps))));
-                    })))),
+            !isMobile &&
+                React__default['default'].createElement(Container$5, null,
+                    React__default['default'].createElement(SocialEntry$1, null,
+                        cakePriceUsd ? (React__default['default'].createElement(PriceLink$1, { href: priceLink, target: "_blank" },
+                            React__default['default'].createElement(Text, { color: "textSubtle", bold: true }, "$" + cakePriceUsd.toFixed(3)))) : (React__default['default'].createElement(Skeleton, { width: 80, height: 24 })),
+                        React__default['default'].createElement(Flex, null, socials.map(function (social, index) {
+                            var Icon = Icons[social.icon];
+                            var iconProps = { width: "24px", color: "textSubtle", style: { cursor: "pointer" } };
+                            var mr = index < socials.length - 1 ? "8px" : 0;
+                            if (social.items) {
+                                return (React__default['default'].createElement(Dropdown, { key: social.label, position: "bottom", target: React__default['default'].createElement(Icon, __assign({}, iconProps, { mr: mr })) }, social.items.map(function (item) { return (React__default['default'].createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label)); })));
+                            }
+                            return (React__default['default'].createElement(Link, { external: true, key: social.label, href: social.href, "aria-label": social.label, mr: mr },
+                                React__default['default'].createElement(Icon, __assign({}, iconProps))));
+                        })))),
             React__default['default'].createElement(Flex, null,
                 React__default['default'].createElement(UserBlock, { account: account, login: login, logout: logout }),
                 profile && React__default['default'].createElement(Avatar, { profile: profile }))),
