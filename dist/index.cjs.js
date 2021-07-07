@@ -2699,7 +2699,10 @@ var Menu = function (_a) {
                 var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
                 // const handleClick = isMobile ? () => setIsPushed(false) : undefined;
                 if (entry.items) {
-                    return (React__default['default'].createElement(Dropdown, { key: entry.label, position: "bottom", target: React__default['default'].createElement(Icon, __assign({}, iconElement)) }, entry.items.map(function (item) { return (React__default['default'].createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label)); }))
+                    return (React__default['default'].createElement(Dropdown, { key: entry.label, position: "bottom", target: React__default['default'].createElement(MenuEntry, { key: entry.label, isActive: entry.href === location.pathname, className: calloutClass },
+                            React__default['default'].createElement(MenuLink, { href: entry.href },
+                                iconElement,
+                                React__default['default'].createElement(LinkLabel, { isPushed: isPushed }, entry.label))) }, entry.items.map(function (item) { return (React__default['default'].createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label)); }))
                     // <Accordion2
                     //     key={entry.label}
                     //     isPushed={isPushed}

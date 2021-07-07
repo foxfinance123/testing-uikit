@@ -11,7 +11,6 @@ import { NavProps } from "./types";
 import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
 import Avatar from "./Avatar";
 import Accordion from "../../../../compiled/src/widgets/Menu/Accordion";
-import Accordion2 from "../../../../compiled/src/widgets/Menu/Accordion2";
 import {LinkLabel, MenuEntry} from "../../../../compiled/src/widgets/Menu/MenuEntry";
 import MenuLink from "../../../../compiled/src/widgets/Menu/MenuLink";
 import * as IconModule from "../../../../compiled/src/widgets/Menu/icons";
@@ -138,7 +137,14 @@ const Menu: React.FC<NavProps> = ({
 
                     if (entry.items) {
                         return (
-                            <Dropdown key={entry.label} position="bottom" target={<Icon {...iconElement} />}>
+                            <Dropdown key={entry.label} position="bottom" target={
+                                <MenuEntry key={entry.label} isActive={entry.href === location.pathname} className={calloutClass}>
+                                    <MenuLink href={entry.href}>
+                                        {iconElement}
+                                        <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
+                                    </MenuLink>
+                                </MenuEntry>
+                            }>
                                 {entry.items.map((item:any) => (
                                     <Link external key={item.label} href={item.href} aria-label={item.label} color="textSubtle">
                                         {item.label}
