@@ -2680,7 +2680,7 @@ var Menu = function (_a) {
     return (React.createElement(Wrapper$1, null,
         React.createElement(StyledNav, { showMenu: showMenu },
             React.createElement(Logo$1, { isMobile: isMobile, isPushed: isPushed, togglePush: function () { return setIsPushed(function (prevState) { return !prevState; }); }, isDark: isDark, href: (_b = homeLink === null || homeLink === void 0 ? void 0 : homeLink.href) !== null && _b !== void 0 ? _b : "/" }),
-            React.createElement(Flex, null, !isMobile && links.map(function (entry) {
+            !isMobile && links.map(function (entry) {
                 var Icon = Icons[entry.icon];
                 var iconElement = React.createElement(Icon, { width: "24px", mr: "8px" });
                 var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
@@ -2693,7 +2693,7 @@ var Menu = function (_a) {
                     React.createElement(MenuLink, { href: entry.href },
                         iconElement,
                         React.createElement(LinkLabel, { isPushed: isPushed }, entry.label))));
-            })),
+            }),
             React.createElement(Flex, null,
                 React.createElement(UserBlock, { account: account, login: login, logout: logout }),
                 profile && React.createElement(Avatar, { profile: profile }))),
