@@ -140,7 +140,7 @@ const Menu: React.FC<NavProps> = ({
                     if (entry.items) {
                         return (
                             <Dropdown key={entry.label} position="bottom" target={
-                                <MenuEntry key={entry.label} isActive={entry.href === location.pathname} className={calloutClass}>
+                                <MenuEntry key={entry.label} className={calloutClass}>
                                     <MenuLink href={entry.href}>
                                         {iconElement}
                                         <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
