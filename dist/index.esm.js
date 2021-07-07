@@ -2688,7 +2688,8 @@ var Menu = function (_a) {
                 if (entry.items) {
                     return (React.createElement(Dropdown, { key: entry.label, position: "bottom", target: React.createElement(MenuEntry, { key: entry.label, isActive: false, className: calloutClass },
                             iconElement,
-                            React.createElement(LinkLabel, { isPushed: isPushed }, entry.label)) }, entry.items.map(function (item) { return (React.createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label)); }))
+                            React.createElement(LinkLabel, { isPushed: isPushed }, entry.label)) }, entry.items.map(function (item) { return (React.createElement(MenuEntry, { key: item.href, secondary: true, isActive: false },
+                        React.createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label))); }))
                     // <Accordion2
                     //     key={entry.label}
                     //     isPushed={isPushed}

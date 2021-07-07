@@ -143,9 +143,11 @@ const Menu: React.FC<NavProps> = ({
                                 </MenuEntry>
                             }>
                                 {entry.items.map((item:any) => (
-                                    <Link external key={item.label} href={item.href} aria-label={item.label} color="textSubtle">
-                                        {item.label}
-                                    </Link>
+                                    <MenuEntry key={item.href} secondary isActive={false}>
+                                        <Link external key={item.label} href={item.href} aria-label={item.label} color="textSubtle">
+                                            {item.label}
+                                        </Link>
+                                    </MenuEntry>
                                 ))}
                             </Dropdown>
                             // <Accordion2
