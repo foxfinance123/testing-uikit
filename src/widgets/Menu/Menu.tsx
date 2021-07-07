@@ -80,6 +80,7 @@ const SocialEntry = styled.div`
 
 const PriceLink = styled.a`
   display: flex;
+  padding-right: 8px;
   align-items: center;
   svg {
     transition: transform 0.3s;
