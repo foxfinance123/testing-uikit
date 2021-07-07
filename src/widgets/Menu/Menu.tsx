@@ -136,7 +136,12 @@ const Menu: React.FC<NavProps> = ({
 
                     if (entry.items) {
                         return (
-                            <Dropdown key={entry.label} position="top" target={<Icon {...iconElement} />}>
+                            <Dropdown key={entry.label} position="bottom" target={
+                                <MenuLink href={entry.href}>
+                                    {iconElement}
+                                    <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
+                                </MenuLink>
+                            }>
                                 {entry.items.map((item:any) => (
                                     <Link external key={item.label} href={item.href} aria-label={item.label} color="textSubtle">
                                         {item.label}
