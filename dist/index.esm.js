@@ -2377,7 +2377,7 @@ var StyledPanel = styled.div(templateObject_1$D || (templateObject_1$D = __makeT
     return theme.mediaQueries.nav;
 }, function (_a) {
     var isPushed = _a.isPushed;
-    return (isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED) + "px";
+    return (isPushed ? 0 : 0) + "px";
 });
 var Panel = function (props) {
     var isPushed = props.isPushed, showMenu = props.showMenu;
