@@ -8,8 +8,8 @@ var styledSystem = require('styled-system');
 var get = require('lodash/get');
 var noop = require('lodash/noop');
 var debounce = require('lodash/debounce');
-var throttle = require('lodash/throttle');
 var reactRouterDom = require('react-router-dom');
+var throttle = require('lodash/throttle');
 var reactTransitionGroup = require('react-transition-group');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }

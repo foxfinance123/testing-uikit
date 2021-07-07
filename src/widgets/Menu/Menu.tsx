@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import throttle from "lodash/throttle";
 import Overlay from "../../components/Overlay/Overlay";
@@ -10,14 +11,12 @@ import UserBlock from "./UserBlock";
 import { NavProps } from "./types";
 import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
 import Avatar from "./Avatar";
-import Accordion from "../../../../compiled/src/widgets/Menu/Accordion";
-import {LinkLabel, MenuEntry} from "../../../../compiled/src/widgets/Menu/MenuEntry";
-import MenuLink from "../../../../compiled/src/widgets/Menu/MenuLink";
-import * as IconModule from "../../../../compiled/src/widgets/Menu/icons";
-import {SvgProps} from "../../../../compiled/src/components/Svg";
+import {LinkLabel, MenuEntry} from "./MenuEntry";
+import MenuLink from "./MenuLink";
+import * as IconModule from "./icons";
+import {SvgProps} from "../../components/Svg";
 import {Dropdown} from "../../components/Dropdown";
 import Link from "../../components/Link/Link";
-import { useLocation } from "react-router-dom";
 
 const Wrapper = styled.div`
   position: relative;
