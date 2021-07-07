@@ -2686,8 +2686,8 @@ var Menu = function (_a) {
                 var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
                 // const handleClick = isMobile ? () => setIsPushed(false) : undefined;
                 if (entry.items) {
-                    return (React.createElement(Dropdown, { key: entry.label, position: "bottom", target: React.createElement("div", null,
-                            React.createElement(Icon, __assign({}, iconElement)),
+                    return (React.createElement(Dropdown, { key: entry.label, position: "bottom", target: React.createElement(MenuEntry, { key: entry.label, isActive: false, className: calloutClass },
+                            iconElement,
                             React.createElement(LinkLabel, { isPushed: isPushed }, entry.label)) }, entry.items.map(function (item) { return (React.createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label)); }))
                     // <Accordion2
                     //     key={entry.label}
