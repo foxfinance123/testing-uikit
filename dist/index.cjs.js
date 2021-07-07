@@ -2090,7 +2090,7 @@ var Logo$1 = function (_a) {
         React__default['default'].createElement(Icon$q, { className: "mobile-icon" }),
         React__default['default'].createElement(Logo, { className: "desktop-icon", isDark: isDark })));
     return (React__default['default'].createElement(Flex, null,
-        React__default['default'].createElement(MenuButton, { "aria-label": "Toggle menu", onClick: togglePush, mr: "24px" }, isPushed ? (React__default['default'].createElement(Icon$L, { width: "24px", color: "primary" })) : (React__default['default'].createElement(Icon$K, { width: "24px", color: "primary" }))),
+        React__default['default'].createElement(MenuButton, { "aria-label": "Toggle menu", onClick: togglePush, mr: "24px" }, isPushed && (React__default['default'].createElement(Icon$L, { width: "24px", color: "primary" }))),
         isAbsoluteUrl ? (React__default['default'].createElement(StyledLink$1, { as: "a", href: href, "aria-label": "FoxFinance home page" }, innerLogo)) : (React__default['default'].createElement(StyledLink$1, { to: href, "aria-label": "FoxFinance home page" }, innerLogo))));
 };
 var templateObject_1$y;
@@ -2390,7 +2390,7 @@ var StyledPanel = styled__default['default'].div(templateObject_1$D || (template
     return theme.mediaQueries.nav;
 }, function (_a) {
     var isPushed = _a.isPushed;
-    return (isPushed ? 0 : 0) + "px";
+    return (isPushed ? SIDEBAR_WIDTH_FULL : 0) + "px";
 });
 var Panel = function (props) {
     var isPushed = props.isPushed, showMenu = props.showMenu;
