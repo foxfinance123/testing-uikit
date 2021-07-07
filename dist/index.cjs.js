@@ -2101,10 +2101,12 @@ var links = [
         label: "Home",
         icon: "HomeIcon",
         href: "/",
+        showDesktop: false
     },
     {
         label: "Trade",
         icon: "TradeIcon",
+        showDesktop: true,
         items: [
             {
                 label: "Exchange",
@@ -2120,25 +2122,30 @@ var links = [
         label: "Farms",
         icon: "FarmIcon",
         href: "/farms",
+        showDesktop: true,
     },
     {
         label: "Pools",
         icon: "PoolIcon",
         href: "/syrup",
+        showDesktop: true,
     },
     {
         label: "Lottery",
         icon: "TicketIcon",
         href: "/lottery",
+        showDesktop: true,
     },
     {
         label: "NFT",
         icon: "NftIcon",
         href: "/nft",
+        showDesktop: true,
     },
     {
         label: "Profile & Teams",
         icon: "GroupsIcon",
+        showDesktop: false,
         items: [
             {
                 label: "Leaderboard",
@@ -2154,6 +2161,7 @@ var links = [
     {
         label: "Info",
         icon: "InfoIcon",
+        showDesktop: false,
         items: [
             {
                 label: "Overview",
@@ -2176,6 +2184,7 @@ var links = [
     {
         label: "IFO",
         icon: "IfoIcon",
+        showDesktop: false,
         items: [
             {
                 label: "Next",
@@ -2190,6 +2199,7 @@ var links = [
     {
         label: "More",
         icon: "MoreIcon",
+        showDesktop: false,
         items: [
             // {
             //   label: "Voting",
@@ -2697,29 +2707,11 @@ var Menu = function (_a) {
                 var Icon = Icons[entry.icon];
                 var iconElement = React__default['default'].createElement(Icon, { width: "24px", mr: "8px" });
                 var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
-                // const handleClick = isMobile ? () => setIsPushed(false) : undefined;
                 if (entry.items) {
                     return (React__default['default'].createElement(Dropdown, { key: entry.label, position: "bottom", target: React__default['default'].createElement(MenuEntry, { key: entry.label, isActive: false, className: calloutClass },
                             iconElement,
                             React__default['default'].createElement(LinkLabel, { isPushed: isPushed }, entry.label)) }, entry.items.map(function (item) { return (React__default['default'].createElement(MenuEntry, { key: item.href, isActive: false },
-                        React__default['default'].createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label))); }))
-                    // <Accordion2
-                    //     key={entry.label}
-                    //     isPushed={isPushed}
-                    //     pushNav={setIsPushed}
-                    //     icon={iconElement}
-                    //     label={entry.label}
-                    //     initialOpenState={entry.initialOpenState}
-                    //     className={calloutClass}
-                    // >
-                    //   {isPushed &&
-                    //   entry.items.map((item:any) => (
-                    //       <MenuEntry key={item.href} secondary isActive={item.href === location.pathname}>
-                    //         <MenuLink href={item.href}>{item.label}</MenuLink>
-                    //       </MenuEntry>
-                    //   ))}
-                    // </Accordion2>
-                    );
+                        React__default['default'].createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label))); })));
                 }
                 return (React__default['default'].createElement(MenuEntry, { key: entry.label, isActive: entry.href === location.pathname, className: calloutClass },
                     React__default['default'].createElement(MenuLink, { href: entry.href },
