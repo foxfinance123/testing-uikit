@@ -2366,7 +2366,7 @@ var StyledPanel = styled.div(templateObject_1$D || (templateObject_1$D = __makeT
     return theme.nav.background;
 }, function (_a) {
     var isPushed = _a.isPushed;
-    return (isPushed ? "0px" : 0);
+    return (isPushed ? SIDEBAR_WIDTH_FULL + "px" : 0);
 }, function (_a) {
     var isPushed = _a.isPushed;
     return (isPushed ? "2px solid rgba(133, 133, 133, 0.1)" : 0);
