@@ -17,6 +17,7 @@ import * as IconModule from "../../../../compiled/src/widgets/Menu/icons";
 import {SvgProps} from "../../../../compiled/src/components/Svg";
 import {Dropdown} from "../../components/Dropdown";
 import Link from "../../components/Link/Link";
+import { useLocation } from "react-router-dom";
 
 const Wrapper = styled.div`
   position: relative;
@@ -116,6 +117,7 @@ const Menu: React.FC<NavProps> = ({
     const homeLink = links.find((link) => link.label === "Home");
 
     const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
+    const location = useLocation();
 
     return (
         <Wrapper>
