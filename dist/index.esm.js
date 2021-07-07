@@ -4,8 +4,8 @@ import { space, flexbox, layout } from 'styled-system';
 import get from 'lodash/get';
 import noop from 'lodash/noop';
 import debounce from 'lodash/debounce';
-import { Link as Link$1, NavLink, useLocation } from 'react-router-dom';
 import throttle from 'lodash/throttle';
+import { Link as Link$1, NavLink, useLocation } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 /*! *****************************************************************************
@@ -2677,7 +2677,6 @@ var Menu = function (_a) {
     // Find the home link if provided
     var homeLink = links.find(function (link) { return link.label === "Home"; });
     var Icons = IconModule;
-    var location = useLocation();
     return (React.createElement(Wrapper$1, null,
         React.createElement(StyledNav, { showMenu: showMenu },
             React.createElement(Logo$1, { isMobile: isMobile, isPushed: isPushed, togglePush: function () { return setIsPushed(function (prevState) { return !prevState; }); }, isDark: isDark, href: (_b = homeLink === null || homeLink === void 0 ? void 0 : homeLink.href) !== null && _b !== void 0 ? _b : "/" }),
@@ -2687,10 +2686,7 @@ var Menu = function (_a) {
                 var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
                 // const handleClick = isMobile ? () => setIsPushed(false) : undefined;
                 if (entry.items) {
-                    return (React.createElement(Dropdown, { key: entry.label, position: "bottom", target: React.createElement(MenuEntry, { key: entry.label, className: calloutClass },
-                            React.createElement(MenuLink, { href: entry.href },
-                                iconElement,
-                                React.createElement(LinkLabel, { isPushed: isPushed }, entry.label))) }, entry.items.map(function (item) { return (React.createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label)); }))
+                    return (React.createElement(Dropdown, { key: entry.label, position: "top", target: React.createElement(Icon, __assign({}, iconElement)) }, entry.items.map(function (item) { return (React.createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label)); }))
                     // <Accordion2
                     //     key={entry.label}
                     //     isPushed={isPushed}

@@ -8,8 +8,8 @@ var styledSystem = require('styled-system');
 var get = require('lodash/get');
 var noop = require('lodash/noop');
 var debounce = require('lodash/debounce');
-var reactRouterDom = require('react-router-dom');
 var throttle = require('lodash/throttle');
+var reactRouterDom = require('react-router-dom');
 var reactTransitionGroup = require('react-transition-group');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -2690,7 +2690,6 @@ var Menu = function (_a) {
     // Find the home link if provided
     var homeLink = links.find(function (link) { return link.label === "Home"; });
     var Icons = IconModule;
-    var location = reactRouterDom.useLocation();
     return (React__default['default'].createElement(Wrapper$1, null,
         React__default['default'].createElement(StyledNav, { showMenu: showMenu },
             React__default['default'].createElement(Logo$1, { isMobile: isMobile, isPushed: isPushed, togglePush: function () { return setIsPushed(function (prevState) { return !prevState; }); }, isDark: isDark, href: (_b = homeLink === null || homeLink === void 0 ? void 0 : homeLink.href) !== null && _b !== void 0 ? _b : "/" }),
@@ -2700,10 +2699,7 @@ var Menu = function (_a) {
                 var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
                 // const handleClick = isMobile ? () => setIsPushed(false) : undefined;
                 if (entry.items) {
-                    return (React__default['default'].createElement(Dropdown, { key: entry.label, position: "bottom", target: React__default['default'].createElement(MenuEntry, { key: entry.label, className: calloutClass },
-                            React__default['default'].createElement(MenuLink, { href: entry.href },
-                                iconElement,
-                                React__default['default'].createElement(LinkLabel, { isPushed: isPushed }, entry.label))) }, entry.items.map(function (item) { return (React__default['default'].createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label)); }))
+                    return (React__default['default'].createElement(Dropdown, { key: entry.label, position: "top", target: React__default['default'].createElement(Icon, __assign({}, iconElement)) }, entry.items.map(function (item) { return (React__default['default'].createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label)); }))
                     // <Accordion2
                     //     key={entry.label}
                     //     isPushed={isPushed}

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import throttle from "lodash/throttle";
 import Overlay from "../../components/Overlay/Overlay";
@@ -116,7 +115,6 @@ const Menu: React.FC<NavProps> = ({
     const homeLink = links.find((link) => link.label === "Home");
 
     const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
-    const location = useLocation();
 
     return (
         <Wrapper>
@@ -138,14 +136,7 @@ const Menu: React.FC<NavProps> = ({
 
                     if (entry.items) {
                         return (
-                            <Dropdown key={entry.label} position="bottom" target={
-                                <MenuEntry key={entry.label} className={calloutClass}>
-                                    <MenuLink href={entry.href}>
-                                        {iconElement}
-                                        <LinkLabel isPushed={isPushed}>{entry.label}</LinkLabel>
-                                    </MenuLink>
-                                </MenuEntry>
-                            }>
+                            <Dropdown key={entry.label} position="top" target={<Icon {...iconElement} />}>
                                 {entry.items.map((item:any) => (
                                     <Link external key={item.label} href={item.href} aria-label={item.label} color="textSubtle">
                                         {item.label}
