@@ -2693,7 +2693,7 @@ var Menu = function (_a) {
     return (React__default['default'].createElement(Wrapper$1, null,
         React__default['default'].createElement(StyledNav, { showMenu: showMenu },
             React__default['default'].createElement(Logo$1, { isMobile: isMobile, isPushed: isPushed, togglePush: function () { return setIsPushed(function (prevState) { return !prevState; }); }, isDark: isDark, href: (_b = homeLink === null || homeLink === void 0 ? void 0 : homeLink.href) !== null && _b !== void 0 ? _b : "/" }),
-            !isMobile && links.map(function (entry) {
+            React__default['default'].createElement(Flex, null, !isMobile && links.map(function (entry) {
                 var Icon = Icons[entry.icon];
                 var iconElement = React__default['default'].createElement(Icon, { width: "24px", mr: "8px" });
                 var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
@@ -2706,7 +2706,7 @@ var Menu = function (_a) {
                     React__default['default'].createElement(MenuLink, { href: entry.href },
                         iconElement,
                         React__default['default'].createElement(LinkLabel, { isPushed: isPushed }, entry.label))));
-            }),
+            })),
             React__default['default'].createElement(Flex, null,
                 React__default['default'].createElement(UserBlock, { account: account, login: login, logout: logout }),
                 profile && React__default['default'].createElement(Avatar, { profile: profile }))),

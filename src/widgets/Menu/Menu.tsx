@@ -125,7 +125,7 @@ const Menu: React.FC<NavProps> = ({
           isDark={isDark}
           href={homeLink?.href ?? "/"}
         />
-
+        <Flex>
         { !isMobile && links.map((entry:any) => {
           const Icon = Icons[entry.icon];
           const iconElement = <Icon width="24px" mr="8px" />;
@@ -162,6 +162,7 @@ const Menu: React.FC<NavProps> = ({
               </MenuEntry>
           );
         })}
+        </Flex>
         <Flex>
           <UserBlock account={account} login={login} logout={logout} />
           {profile && <Avatar profile={profile} />}
