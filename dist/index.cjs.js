@@ -2701,7 +2701,7 @@ var Menu = function (_a) {
                 if (entry.items) {
                     return (React__default['default'].createElement(Dropdown, { key: entry.label, position: "bottom", target: React__default['default'].createElement(MenuEntry, { key: entry.label, isActive: false, className: calloutClass },
                             iconElement,
-                            React__default['default'].createElement(LinkLabel, { isPushed: isPushed }, entry.label)) }, entry.items.map(function (item) { return (React__default['default'].createElement(MenuEntry, { key: item.href, secondary: true, isActive: false },
+                            React__default['default'].createElement(LinkLabel, { isPushed: isPushed }, entry.label)) }, entry.items.map(function (item) { return (React__default['default'].createElement(MenuEntry, { key: item.href, isActive: false },
                         React__default['default'].createElement(Link, { external: true, key: item.label, href: item.href, "aria-label": item.label, color: "textSubtle" }, item.label))); }))
                     // <Accordion2
                     //     key={entry.label}

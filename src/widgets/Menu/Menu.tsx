@@ -143,7 +143,7 @@ const Menu: React.FC<NavProps> = ({
                                 </MenuEntry>
                             }>
                                 {entry.items.map((item:any) => (
-                                    <MenuEntry key={item.href} secondary isActive={false}>
+                                    <MenuEntry key={item.href} isActive={false}>
                                         <Link external key={item.label} href={item.href} aria-label={item.label} color="textSubtle">
                                             {item.label}
                                         </Link>
